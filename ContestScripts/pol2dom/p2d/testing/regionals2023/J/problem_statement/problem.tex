@@ -1,0 +1,88 @@
+\problemname{Jay's Son Ja\$on's Family Tree
+}
+
+Jay's son ja\$on has moved on from socks and is looking to start a family. But,
+he has some very particular naming conventions. His son (and his sons' sons and so on)
+will be named using the following rules:
+
+The son's first name will be their father's first name concatenated with the letters ``SON''.
+The son's middle name will be the concatenation of their father's first, middle, and last names.
+The son's last name will be the same as their father's last name.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{fig}
+\end{center}
+
+For example, Jay's son ja\$on's name is of the following form (but using uppercase letters):
+
+\begin{itemize}
+\item First: JAY'S
+\item Middle: SON
+\item Last: JA\$ON
+\end{itemize}
+
+Jay's son ja\$on's son (which we would call his first descendant) would have the following
+first, middle, and last names (but using uppercase letters):
+
+\begin{itemize}
+\item First: JAY'SSON
+\item Middle: JAY'SSONJA\$ON
+\item Last: JA\$ON
+\end{itemize}
+
+And Jay's son ja\$on's grandson, which we call his second descendant, would
+have the following first, middle, and last names (but using uppercase letters):
+
+\begin{itemize}
+\item First: JAY'SSONSON
+\item Middle: JAY'SSONJAY'SSONJA\$ONJA\$ON
+\item Last: JA\$ON
+\end{itemize}
+
+Jay's son ja\$on has convinced his friends to use this naming convention as well!
+For example, his best friend BENNY FACTORS BENEFACTOR will give his future son
+the following first, middle, and last names:
+
+\begin{itemize}
+\item First: BENNYSON
+\item Middle: BENNYFACTORSBENEFACTOR
+\item Last: BENEFACTOR
+\end{itemize}
+
+Unfortunately, Jay's son ja\$on won't live forever so he can't make sure that
+this naming convention is followed for all of his and his friends' descendants. But, he can come
+back as a ghost and check a birth certificate. Since the birth certificate
+will be very long he only has time to check one character of his or one of his friend's $K$th
+descendant. If he finds the wrong letter in the birth certificate, he will haunt
+this descendant for the rest of their life by stealing socks from the washing
+machine.
+
+
+
+Jay's son ja\$on needs your help to figure out the $C$th index character
+(starting from 0) of his or one of his friend's $K$th descendant's full name, assuming the naming
+convention has been followed correctly. The $C$th
+index character in the full name of the $K$th descendant is the $C$th index
+character of the concatenation of their first, middle, and last name, without
+any spaces between.
+
+
+\section*{Input}
+
+The first line contains two integers. The first integer $K$ ($1 \leq K
+\leq 10^9$), denotes the depth of the target name in the family tree. The second
+integer $C$ ($0 \leq C \leq 5\times 10^{12}$), denotes which character of the target
+name to compute. It is guaranteed that $C$ will be less than the length of the
+target name at depth $K$.
+
+The second line contains three space-separated non-empty strings of uppercase
+English letters, dollar signs (\$), or single quotes ('), denoting the first,
+middle, and last names, respectively, of the name at the top of the family tree.
+The length of each string will be at most $10^5$ characters.
+
+
+\section*{Output}
+
+Display a single character which is the $C$th index character of the
+concatenation of the first, middle, and last name at depth $K$ in the family
+tree.

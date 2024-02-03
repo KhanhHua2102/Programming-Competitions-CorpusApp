@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "archiver": "^6.0.1",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-jwt-permissions": "^1.3.7",
+    "express-oauth2-jwt-bearer": "^1.5.0",
+    "express-openid-connect": "^2.17.0",
+    "mysql": "^2.18.1",
+    "prettier": "^3.0.3",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1"
+  },
+  "scripts": {
+    "format:check": "prettier -c .",
+    "format": " npx prettier -w .",
+    "setup": "npm install && cd CorpusApp && npm run setup",
+    "prod": "cd CorpusApp && npm run prod"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}

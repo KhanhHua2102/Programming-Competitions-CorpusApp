@@ -1,0 +1,44 @@
+contest_name: Testing pol2dom
+
+front_page_statements: absolute_path/statements_frontpage.pdf # A single-page pdf
+front_page_solutions: absolute_path/solutions_frontpage.pdf # A single-page pdf
+
+# hide_balloon: 1 # A balloon with the color of the problem is not present in the problem statement.
+# hide_tlml: 1 # The time limit and memory limit of each problem is not shown in the pdf statement (useful for printing statements before the time limit is finalized).
+
+polygon: # Credentials for Polygon APIs. Can be generated in Polygon -> Settings.
+  key: ???
+  secret: ???
+
+domjudge: # Credentials for the DOMjudge instance APIs. Must be an admin user.
+  server: https://www.domjudge.org/demoweb
+  username: admin
+  password: admin
+  # The external ID of the contest in DOMjudge.
+  # The contest is NOT created by pol2dom and must be manually created by the user.
+  contest_id: testing_contest
+
+problems:
+  - name: gianni
+    label: A
+    color: CornflowerBlue # HTML color: https://htmlcolorcodes.com/color-names/
+    override_memory_limit: 2048 # MiB
+    # To find the problem id in Polygon:
+    # 1. Open the problem in Polygon
+    # 2. The first row of the right-side menu contains id = ???.
+    polygon_id: ???
+    author: Federico Glaudo
+    preparation: Federico Glaudo
+  - name: drone-photo
+    label: B
+    color: '#FFFF00' # Also hexadecimal colors are valid.
+    override_time_limit: 3 # seconds
+    polygon_id: ???
+    author: Andrea Ciprietti
+    preparation: Filippo Baroni
+  - name: referee-match
+    label: C
+    color: Red
+    polygon_id: ???
+    author: Gerard Orriols
+    preparation: Gerard Orriols

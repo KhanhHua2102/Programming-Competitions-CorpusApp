@@ -1,0 +1,43 @@
+{
+  "scoring": null,
+  "notes": "",
+  "legend": "Jay and Jay's son ja\\$on are playing a game together. This game involves counting\noccurrences of a string $J$ in another string $S$. But, ja\\$on has\ngotten so good at this game, Jay is at a loss for how to keep it interesting.\n\nJay is a menace to society and has decided to make the game more fun for Jay's\nson ja\\$on by adding some new rules. On top of $S$, Jay will define $K + 1$ more strings\n$S_0, S_1, \\dots, S_K$. $S_i$ can be created by taking the first character in $S$, skipping the next $i$ characters, then taking the next character, then skipping the next $i$ characters, and so on. For example, if $S$ is \\texttt{southpacific}, then $S_2$ is \\texttt{staf}. Note that $S_0$ and $S$ are the same string.\n\nFurther, in honour of Jay's son ja\\$on's name, Jay will use letters from a language called `Engli\\$h', which contains all lowercase English letters, except that the letter \\texttt{s} is replaced with the letter \\texttt{\\$}. So \\texttt{\\$outh}, \\texttt{pacific}, \\texttt{programming}, \\texttt{conte\\$t} are valid words in Engli\\$h, but \\texttt{south} and \\texttt{contest} are not.\n\nIn Jay's new game, he must find the string $J$ in each of the $K+1$ words.\nFor example, if $S$ is \\texttt{aacbc} and $J$ is \\texttt{ac}, then $S_1$ is \\texttt{acc}, and $S_2$ is \\texttt{ab}. $J$ is found once in both $S_0$ and $S_1$, but not $S_2$.\n\nGiven the strings $S$ and $J$, as well as the value of $K$, determine the number of occurrences of $J$ in each $S_i$.\n",
+  "authorLogin": "Edgeworth",
+  "language": "english",
+  "timeLimit": 15000,
+  "output": "Display the number of occurrences of $J$ in $S_0, S_1, \\dots, S_K$.",
+  "inputFile": "stdin",
+  "outputFile": "stdout",
+  "input": "The first line of the input contains a single integer $K$~($0 \\leq K < 1\\,000\\,000$),\nwhich is the number of strings to check.\n\nThe second line of the input contains a single non-empty string $S$ that has strictly more than $K$ and at most $1\\,000\\,000$ characters, consisting of Engli\\$h letters.\n\nThe third line of the input contains a single non-empty string $J$, consisting of Engli\\$h letters. The length of $J$ is at most the length of $S$.\n",
+  "authorName": "Eliot Courtney",
+  "sampleTests": [
+    {
+      "output": "0\n0\n0\n1\n",
+      "input": "3\nca$hca$h\ncc\n",
+      "inputFile": "example.01",
+      "outputFile": "example.01.a"
+    },
+    {
+      "output": "1\n",
+      "input": "0\nabc\nabc\n",
+      "inputFile": "example.02",
+      "outputFile": "example.02.a"
+    },
+    {
+      "output": "1\n1\n0\n",
+      "input": "2\naacbc\nac\n",
+      "inputFile": "example.03",
+      "outputFile": "example.03.a"
+    },
+    {
+      "output": "3\n0\n1\n0\n",
+      "input": "3\n$f$f$f\n$f\n",
+      "inputFile": "example.04",
+      "outputFile": "example.04.a"
+    }
+  ],
+  "name": "A Menace 2 \\$ociety",
+  "interaction": null,
+  "memoryLimit": 268435456,
+  "tutorial": ""
+}

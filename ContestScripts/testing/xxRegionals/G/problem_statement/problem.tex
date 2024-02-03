@@ -1,0 +1,25 @@
+\problemname{Great Trails
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+Alex is in charge of planning the walking trails in a nature reserve. The nature reserve comprises $M$ trails between $N$ intersection points. The intersection points are labelled with unique integers from the inclusive range between 1 and $N$. Each trail runs from one intersection point to another intersection point and can only be traversed in one direction to prevent hikers from bumping into one another. There are no two trails between the same pair of intersection points going in the same direction, though there may be one in each direction. No trail can start and end at the same intersection point. The length of each trail is a positive number of metres.
+
+A \textit{tour} of the nature reserve is a sequence of intersection points that are connected by trails that go from intersection point 1 to intersection point $N$. Hikers always take the shortest tour they can. If there are many shortest tours, they pick one arbitrarily. If there are no tours, the hikers go home. Two tours are considered different if the sequences of intersection points they visit are different.
+
+Alex needs to close one of the trails to save on costs. Hikers will complain if their tours change, so Alex must pick carefully. Let the length of the shortest tour be $L$. If there is no tour, define $L$ to be infinitely large. For each edge individually, Alex wants to determine the number of distinct tours whose length is equal to $L$ after that edge is deleted. Note that if there are no tours initially ($L$ is infinitely large), then there are always zero tours whose length is equal to $L$ after deleting an edge. Note that edge deletions are independent and should not be applied cumulatively.
+
+
+\section*{Input}
+
+The first line of input contains two integers $N$~($2 \leq N \leq 200\,000$) and $M$~($1 \leq M \leq \min(200\,000, N \cdot (N-1))$), which are the number of intersection points and trails respectively. The next $M$ lines describe the trails. The $i$th of which contains three integers $u_i$~($1 \leq u_i \leq N$), $v_i$~($1 \leq v_i \leq N$ and $u_i \neq v_i$), and $l_i$~($1 \leq l_i \leq 10^9$), the start intersection point, the end intersection point, and the length respectively.
+
+
+\section*{Output}
+
+For each edge in input order, display the number of tours of length $L$ there are after deleting that edge. Since the number of tours can be large, display them modulo $1\,000\,000\,007$.
+

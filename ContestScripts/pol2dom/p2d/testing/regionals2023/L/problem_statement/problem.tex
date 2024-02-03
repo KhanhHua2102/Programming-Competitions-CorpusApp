@@ -1,0 +1,37 @@
+\problemname{Lonely Wizard
+}
+
+Nathan is a thirty-year-old wizard who lives in a small town. He is very lonely
+and awkward and wants to use his wizard powers to make everyone else lonely and
+awkward.
+
+He has a list of $N$ people in the town, and he knows which people are friends
+with each other. Friendships are bidirectional: if $A$ is friends with $B$, then $B$ is friends
+with $A$. He will use his wizard powers to partition the $N$ people into
+two disjoint (possibly empty) sets. Everyone must be in exactly one of the two sets. People who are in different sets cannot communicate and will stop being friends as a result. People in the same set who are already friends will stay friends; there is nothing Nathan can do about this. Note that no new friendships will be created.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{fig}
+\end{center}
+
+
+Nathan wants to cause the most division and strife possible, so he wants to
+maximise the number of friendships that he destroys when partitioning the people
+into two sets. Help Nathan find the maximum number of friendships that he can
+destroy by partitioning the people into two sets.
+
+
+\section*{Input}
+
+The first line of the input contains two integers $N$~($1 \leq N \le
+16$), which is the number of people in the town, and $F$~($0 \leq F \leq \frac{N \times (N - 1)}{2}$), which is the number of friendships.
+
+The following $F$ lines each contain two integers $A$, $B$~($1 \leq A < B \leq
+N$), denoting a friendship between the persons $A$ and $B$. No friendship is duplicated in the input.
+
+
+\section*{Output}
+
+Display a single integer, which is the maximum number of friendships that
+Nathan can destroy.
+

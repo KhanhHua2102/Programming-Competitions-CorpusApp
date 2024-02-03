@@ -1,0 +1,3 @@
+limits:
+  memory: 2048
+validation: default

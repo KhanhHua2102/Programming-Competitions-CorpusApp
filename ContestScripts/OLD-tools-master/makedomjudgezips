@@ -1,0 +1,386 @@
+#!/usr/bin/env python3
+'''Process a directory or a set of directories, each containing a set of
+   tests, plus optional problem spec and solution, to give a set of
+   ICPC-format zips, one per problem, ready for import into DOMjudge.
+   Any return characters in the input and output test files are stripped.
+
+   ------
+
+   Usage:
+      makedomjudgezips [options] directory ...
+
+   ------
+
+   Each directory must contain one or more test data sets consisting of an
+   input file (e.g. test1.in) and the corresponding expected program output
+   from that test (e.g. test1.out). The directory will usually also contain a
+   file problem.ini specifying various parameters for the problemm (see below).
+   The directory may also contain problem specification files problem.pdf,
+   problem.html and/or problem.txt; all such files are included in the zip
+   archive. A single solution file (e.g. mysolution.py) may also be included
+   in the archive but* must be explicitly selected by use of the --soln option.
+   See below.
+
+   problem.ini:
+        The file problem.ini (if present) should contain definitions for
+        one or more of the following parameters: probid (the problem id or
+        shortname for the problem), cid (the contest id), name (the name
+        displayed on the scoreboard), allow_submit (allow submissions of this
+        problem), allow_judge (allow judging of this problem), timelimit (max
+        run time in secs for each test case), special_run (suffix tag of a
+        special run script) special_compare (suffix tag of a special compare
+        script), color (CSS color specification for the problem) and points
+        (how many points the problem is worth). Parameters are specified
+        one per line with the syntax <parametername>=<parametervalue>.
+        If there is no problem.ini, or if a particular parameter is omitted,
+        the problem id and name are taken from the directory name, cid is the
+        current default contest (?), allow_submit and allow_judge are true,
+        timitlimit is 10 secs, there are no special run or special compare,
+        there is no colour and the problem is worth 1 point.
+
+        Any or all of the problem parameters can alternatively be specified
+        by use of the --ini option; see below. Any parameter so-specified
+        overrides the value in problem.ini(s).
+
+   Options:
+
+    -i, --inre=<in_re> specifies the regular expression used to match test data
+        input file names. in_re must contain a capturing group for the test id.
+        For example"(.*)in.dat" would match filenames like test1in.dat,
+        test2in.dat and would call the resulting tests 'test1' and 'test2'. The
+        default is "(.*).in". Each input test id must match an output test id;
+        see --outre. Unmatched tests generate a warning message and are
+        excluded from the output zip(s).
+
+    -o, --outre=<out_re> specifies a regular expression used to match test data
+        output file names. out_re must contain a capturing group for the test id.
+        For example "(.*)out.dat" would match filenames like test1out.dat,
+        test2out.dat and would call the resulting tests 'test1' and 'test2'. The
+        default is "(.*).in". Each output test id must match an input test id;
+        see --inre. Unmatched tests generate a warning message and are
+        excluded from the output zip(s).
+
+    --sampin=<samplein_re> specifies a regular expression used to match sample
+        data. The format and rules are exactly as for --inre
+
+    --sampout=<sampleout_re> specifies a regular expression used to match sample
+        data. The format and rules are exactly as for --outre
+
+    -s, --soln=<solutionfilenamere> specifies a regular expression used to match
+        the names of any solution file(s) to be included in the output zip(s).
+
+    -p, --prob=<problemstatementfilenamere> specifies a regular expression used
+        to match the name of the problem statement file (which should in principle
+        be .tex, .md or .pdf)
+
+    -n, --ini=<parameterspecs> specifies/overrides one of the problem.ini
+        parameters. <parameterspec> must be a string of the form "param=value",
+        e.g. --ini probid=n_queens. There can be multiple --ini options in the
+        command.  Alternatively, multiple parameters can be specified separated
+        by semicolons (which will require quoting) e.g.
+        --ini probid "probid=nqueens;timelimit=5"
+        Note that the probid and name parameters for the problem can only be
+        specified in this way when there is just a single problem directory,
+        as they should be unique.
+
+    -z, --zip=<filename> specifies the filename to use for the zip archive. .zip
+        is added if not already present. If this parameter is omitted the zip
+        is given the same name as the directory containing the problem.
+
+    -h, --help print this docstring
+
+    Example:
+
+    makedomjudgezips -i '(.*)in.dat' -o '(.*)out.dat' -n 'probid=n_queens' .
+'''
+
+import sys
+import os
+import re
+from random import random
+import zipfile
+import argparse
+from collections import defaultdict
+
+INI_DEFAULTS = {
+    'allow_submit': 1,
+    'allow_judge':  1,
+    'timelimit':    10}
+
+ALLOW_TABS = False  # Do we ever want to allow tabs in input files anyway???
+
+class FilenamePair:
+    def __init__(self):
+        self.fin = ''
+        self.fout = ''
+
+
+def random_hex():
+    return "{0:#x}".format(int(256*random()))[-2:]
+
+
+def parseargs():
+    """Parse the arguments in sys.argv"""
+    opts = [(['-i', '--inre'],  {'help': 'RegExp to match test input data files',  'default': '(.*).in'}),
+            (['-o', '--outre'], {'help': 'RegExp to match test output data files', 'default': '(.*).out'}),
+            (['--sampin'],{'help': 'RegExp to match sample input data files',  'default': '(sample.*).in'}),
+            (['--sampout'], {'help': 'RegExp to match sample output data files', 'default': '(sample.*).out'}),
+            (['-p', '--prob'], {'help': 'RegExp to match problem statement (.txt, .html or .pdf)'}),
+            (['-s', '--soln'],  {'help': 'RegExp to match problem solution files'}),
+            (['-n', '--ini'],   {'help': 'Specify zip ini file parameter', 'action':'append'}),
+            (['-z', '--zip'],   {'help': 'Name to use for the output zip file'})]
+
+    desc, usage, full_doc = __doc__.split('------')
+    parser = argparse.ArgumentParser(
+        description=desc.strip(),
+        epilog=full_doc,
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    for opt, dic in opts:
+        parser.add_argument(*opt, **dic)
+
+    parser.add_argument('directory', type=str, nargs='+')
+
+    args = parser.parse_args()
+
+    if args.ini:
+        ini_spec = '\n'.join(args.ini)
+        try:
+            ini_args = parse_ini(ini_spec)
+        except ValueError as v:
+            print(v, file=sys.stderr)
+            print('Type "{} --help" for help'.format(sys.argv[0]))
+            sys.exit(1)
+        args.ini = ini_args
+
+    return args
+
+
+def parse_ini(ini_spec):
+    """Parse all the ini arguments, checking only valid args are present
+       and returning a dictionary of their values
+    """
+
+    valid_ini_args = {'probid', 'cid', 'name', 'allow_submit', 'allow_judge',
+        'timelimit', 'special_run', 'special_compare', 'color'}
+    args = ini_spec.strip().split('\n')
+    arg_vals = {}
+    for argstring in args:
+        for arg in argstring.split(';'):
+            if '=' not in arg:
+                raise ValueError('Invalid -ini argument ({})'.format(arg))
+            name, value = arg.split('=')
+            if name not in valid_ini_args:
+                raise ValueError('Unknown --ini argument ({})'.format(name))
+            arg_vals[name] = value
+    return arg_vals
+
+
+# Pads to reqd length by inserting zeros in front of first digit
+# Gross hack for cruddy Uni waterloo test file naming convention
+# A.1.dat, A.2.dat, ..... A.10.dat, A.11.dat etc
+def zeroPad(s, newLen):
+    result = ''
+    padding = (newLen - len(s)) * '0'
+
+    for c in s:
+        if c.isdigit():
+            result += padding
+            padding = ''
+        result += c
+    return result
+
+
+# Clean an input/output file by deleting
+# \r and all trailing whitespace
+# Return a byte array.
+def clean(filename,  allow_tabs=False):
+    f = open(filename)
+    lines = f.readlines()
+    f.close()
+    num_trimmed_lines = 0
+    if len(lines) and lines[-1] == '':
+        lines = lines[:-1]
+    data = ''
+    for line in lines:
+        while line.endswith(' ') or line.endswith('\r'):
+            line = line[:-1]
+            num_trimmed_lines += 1
+        data += line
+    if '\r' in data or ('\t' in data and not allow_tabs):
+        raise Exception('Tab character(s) or misplaced return(s) found in data file', filename)
+    if num_trimmed_lines != 0:
+        print("Warning:", num_trimmed_lines, "lines in", filename, "had returns or extra white space")
+    return bytes(data, 'utf8')
+
+
+def make_problem_archive(dest_dir, zipname, ini_dict, data, solution_files, problem_files):
+    '''Create the zip archive itself in the specified directory.
+       data is a dict with at most 2 keys: 'sample' and 'secret'.
+       data['sample'] and data['secret'] are themselves dictionaries mapping
+       testnames to a pair of filenames (a FilenamePair object).
+       solution_files and problem_files are lists of the names of solutions
+       and problem statements respectively.
+       '''
+
+    def to_bytes(s): return bytes(s, 'utf8')
+
+    zippath = "{}/{}".format(dest_dir, zipname)
+    print("Creating zip", zippath)
+    zip = zipfile.ZipFile(zippath, 'w', zipfile.ZIP_DEFLATED)
+
+    ini_string = ''
+    for param in ini_dict:
+        ini_string += '{}={}\n'.format(param, ini_dict[param])
+
+    zip.writestr("domjudge-problem.ini", bytes(ini_string, 'utf8'))
+
+    for typ in ['sample', 'secret']:
+        for testname in sorted(data[typ].keys()):
+            filepair = data[typ][testname]
+            if filepair.fin == '':
+                print("Missing input file for test" , testname, file=sys.stderr)
+            elif filepair.fout == '':
+                print("Missing output file for test" , testname, file=sys.stderr)
+            else:
+                print("Adding test", testname)
+                zip.writestr('data/{}/{}.in'.format(typ, testname),
+                             clean(filepair.fin))
+                zip.writestr('data/{}/{}.ans'.format(typ, testname),
+                             clean(filepair.fout))
+
+
+    for f in problem_files:
+        data = open(f, 'br').read()
+        name_in_archive = 'problem.' + f.split('.')[-1]
+        print("Adding problem spec {} as {}".format(f, name_in_archive))
+        zip.writestr(name_in_archive, data)
+
+    for f in solution_files:
+        print("Adding solution file", f)
+        zip.writestr('submissions/' + f, open(f, 'br').read())
+
+
+    zip.close()
+
+
+
+def find_test_data(files, args):
+    """Find all the input/output test files matching the given regular
+       expressions for input and output files. Return a dictionary data
+       with keys 'sample' and 'secret', each of which maps to a dictionary
+       that maps test names to FilenamePair objects.
+    """
+    data = {'sample': defaultdict(FilenamePair), 'secret': defaultdict(FilenamePair)}
+
+    # Work through all files, identifying all test files, including samples
+    regexps = [args.sampin, args.sampout, args.inre, args.outre]
+    file_types  = [('sample', 'in'), ('sample', 'out'), ('secret', 'in'), ('secret', 'out')]
+
+    for f in sorted(files):
+        for i, reg in enumerate(regexps):
+            key, io = file_types[i]
+            match_obj = re.match(reg + '$', f)
+            if match_obj:
+                test_name = match_obj.group(1)
+                if io == 'in':
+                    data[key][test_name].fin = f
+                elif io == 'out':
+                    data[key][test_name].fout = f
+                break  # Match only one of the types
+    return data
+
+
+def make_ini_dict(args):
+    """Read the problem.ini file, if present, parse it, override with any
+       ini args defined in the command line. Insert any of the args that
+       have default values that have not yet been defined and return the
+       result.
+    """
+    if os.path.isfile('problem.ini'):
+        ini_dict = parse_ini(open('problem.ini').read())
+    else:
+        ini_dict = {}
+
+    if args.ini:
+        for key in args.ini:
+            ini_dict[key] = args.ini[key]
+
+    for key in INI_DEFAULTS:
+        if key not in ini_dict:
+            ini_dict[key] = INI_DEFAULTS[key]
+
+    dirname = os.getcwd().split('/')[-1]
+    if 'probid' not in ini_dict:
+        ini_dict['probid'] = dirname.replace(' ', '')
+    if 'name' not in ini_dict:
+        ini_dict['name'] = dirname
+
+    if 'color' not in ini_dict:
+        ini_dict['color'] = "#" + random_hex() + random_hex() + random_hex()
+
+    return ini_dict
+
+
+def process_directory(direct, args):
+    """Process one given directory containing a single problem"""
+    if not os.path.isdir(direct):
+        raise ValueError('{} is not a directory'.format(direct))
+
+    cwd = os.getcwd()
+    os.chdir(direct)
+    files = os.listdir('.')
+
+    data = find_test_data(files, args)
+
+    if len(data['sample']) == 0 and len(data['secret']) == 0:
+        raise ValueError('No data files found in directory ' + direct)
+
+    ini_dict = make_ini_dict(args)
+
+    if args.prob:
+        problem_files = [f for f in files if re.match(args.prob + '$', f)]
+        if len(problem_files) != 1:
+            print("Warning: {} problem statement files found.".format(len(problem_files)))
+            problem_files = []
+    else:
+        problem_files = []
+
+    if args.soln:
+        solution_files = [f for f in files if re.match(args.soln + '$', f)]
+    else:
+        solution_files = []
+
+    if args.zip:
+        zipname = args.zip
+    else:
+        direct = direct.strip()
+        if direct[-1] == '/':
+            direct = direct[:-1]
+        zipname = direct.split('/')[-1]
+
+    if not zipname.endswith('.zip'):
+        zipname += '.zip'
+
+    make_problem_archive(cwd, zipname, ini_dict, data, solution_files, problem_files)
+
+
+def main():
+    args = parseargs()
+    #print(args)
+    cwd = os.getcwd()
+    try:
+        if args.ini and ('probid' in args.ini or 'name' in args.ini) and len(args.directory) != 1:
+            raise ValueError("probid or name parameters cannot be specified with multiple directories")
+
+        for direct in args.directory:
+            os.chdir(cwd)  # Reset each time through the loop
+            process_directory(direct, args)
+
+    except ValueError as v:
+        print(v, file=sys.stderr)
+        sys.exit(1)
+
+
+main()
+

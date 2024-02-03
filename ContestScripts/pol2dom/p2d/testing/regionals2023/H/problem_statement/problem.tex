@@ -1,0 +1,59 @@
+\problemname{Hiring an Accountant
+}
+
+Jay's son ja\$on is looking for an accountant to help him with his finances
+after selling OTM call options on NVDA. He has a list of $N$ accountants which
+he interviews one by one, in order. After intreviewing the $i$th accountant he either
+offers the accountant a job or not. If he offers the accountant a job, the
+accountant will either accept or reject the offer. If the accountant accepts the
+offer, Jay's son ja\$on will hire the accountant and will stop interviewing accountants. If the accountant rejects the
+offer, Jay's son ja\$on will move on. However, he will miss the next $M_i$
+accountants and not be able to interview them due to wasted time on the rejected
+offer.
+
+Each accountant has a skill level $S_i$ and a probability $C_i$ of accepting the
+offer. Jay's son ja\$on wants to maximise the expected skill level
+of the accountant he hires because he minimised the value of his brokerage
+account.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{fig}
+\end{center}
+
+Jay's son ja\$on has asked you to come up with a strategy to maximise the expected skill
+level of the accountant he hires. The strategy you provide should tell him, for each
+accountant on the list to be interviewed, whether or not to offer them a job if he
+has a chance to (that is if all earlier candidates were not offered jobs or rejected the offers).
+Note that this means there are $2^N$ unique strategies you could provide Jay's son ja\$on with.
+The expected skill level hired for a strategy is the average over a very large number of trials
+(e.g., $10^{1000}$). Each trial is an independent application of the strategy with the accountants making
+their weighted random choices.
+
+If Jay's son ja\$on doesn't get an accountant, he
+will have to do it himself with his skill of 0.
+
+Jay's son ja\$on doesn't want to have to change his name back to Jay's son
+jason. So, please help Jay's son ja\$on maximise the expected skill
+level of his accountant!
+
+
+\section*{Input}
+
+The first line of the input contains a single integer $N$~($1 \leq N \le 200\,000$),
+denoting the number of accountants to consider.
+
+The second line contains $N$ integers $S_1, S_2, \ldots, S_N$~($1 \leq S_i \leq 10^6$),
+each denoting the skill of the $i$th accountant.
+
+The third line contains $N$ floating point numbers $C_1, C_2, \ldots, C_N$~($0.0
+\leq C_i \leq 1.0$), each denoting the probability that the $i$th accountant will accept Jay's son ja\$on's
+offer. Each floating point number has at most 6 digits after the decimal point.
+
+The fourth line contains $N$ integers $M_1, M_2, \ldots, M_N$~($0 \leq M_i \leq N$),
+denoting how many accountants Jay's son ja\$on will miss the opportunity to
+interview if the $i$th accountant rejects an offer. It is possible that $i+M_i+1 > N$.
+
+
+\section*{Output}
+
+Display the maximum achievable expected skill level of the hired accountant to within an absolute or relative error of $10^{-6}$.

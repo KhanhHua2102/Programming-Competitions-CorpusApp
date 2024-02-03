@@ -1,0 +1,6 @@
+pyyaml==6.0.1
+inflect==7.0.0
+pylatex==1.4.1
+tqdm==4.66.1
+webcolors==1.13
+requests==2.31.0

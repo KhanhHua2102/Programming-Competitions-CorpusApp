@@ -1,0 +1,31 @@
+\problemname{Jay and Jay's son ja\$on
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+Jay and Jay's son ja\$on live in Rome. As we all know, all roads lead to Rome. Every city in the country (other than Rome) has exactly one outgoing road. No matter which city you start in, you can repeatedly take the outgoing roads and eventually arrive back in Rome.
+
+Jay and ja\$on love road trips and scrapbooks. Each year, they take a road trip. They start by picking a city that they have never visited before at any point on any previous road trip (this city cannot be Rome). Their road trip plan is simple for each year: continually take the roads visiting cities along the way until they arrive back in Rome. It is possible they will visit cities that they have visited in previous years, but they may not start the road trip at one of these places.
+
+They alternate who selects the starting city each year (with Jay selecting the city the first year). After each road trip, the person who chose the starting city makes a scrapbook of their road trip. They then brag about it until the next road trip.
+
+Because of this, both Jay and ja\$on want to make the last scrapbook ever so that they can brag about it for the rest of their lives. Both Jay and ja\$on will optimally choose their cities each year so they can be the forever-bragger.
+
+Given a description of the roads, determine whether Jay or ja\$on gets to brag for the rest of their lives.
+
+
+\section*{Input}
+
+The first line of the input contains a single integer $N$~($1 \leq N \leq 200\,000$), which is the number of cities in the country other than Rome. The cities are numbered 1 to $N$, and Rome is number 0.
+
+The next $N$ lines describe the outgoing roads. The $i$th line (1-based) contains a single integer $P_i$~($0 \leq P_i < i$) denoting the outgoing road from city $i$ goes to city $P_i$.
+
+
+\section*{Output}
+
+Display the name of the forever-bragger: \texttt{Jay} or \texttt{ja\$on}.
+

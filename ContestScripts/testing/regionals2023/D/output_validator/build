@@ -1,0 +1,3 @@
+#!/bin/sh
+
+g++ door-to-treasure-compare.cc -O2 -std=c++17 -o run

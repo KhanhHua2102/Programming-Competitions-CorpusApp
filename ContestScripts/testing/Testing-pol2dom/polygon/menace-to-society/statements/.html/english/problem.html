@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="no-cache" http-equiv="pragma" />
+    <meta content="-1" http-equiv="expires" />
+    <meta content="text/html;charset=UTF-8" http-equiv="content-type" />
+    <link href="problem-statement.css" rel="stylesheet" type="text/css" />
+    <title>A Menace 2 \$ociety</title>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$$$','$$$']], displayMath: [['$$$$$$','$$$$$$']]}
+      });
+    </script>
+    <script
+      async=""
+      src="https://polygon.codeforces.com/lib/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"
+      type="text/javascript"
+    ></script>
+  </head>
+  <body>
+    <div class="problem-statement">
+      <div class="header">
+        <div class="title">A Menace 2 $ociety</div>
+        <div class="time-limit">
+          <div class="property-title">time limit per test</div>
+          15 seconds
+        </div>
+        <div class="memory-limit">
+          <div class="property-title">memory limit per test</div>
+          256 megabytes
+        </div>
+        <div class="input-file">
+          <div class="property-title">input</div>
+          standard input
+        </div>
+        <div class="output-file">
+          <div class="property-title">output</div>
+          standard output
+        </div>
+      </div>
+      <div class="legend">
+        <p>
+          Jay and Jay's son ja$on are playing a game together. This game
+          involves counting occurrences of a string $$$J$$$ in another string
+          $$$S$$$. But, ja$on has gotten so good at this game, Jay is at a loss
+          for how to keep it interesting.
+        </p>
+        <p>
+          Jay is a menace to society and has decided to make the game more fun
+          for Jay's son ja$on by adding some new rules. On top of $$$S$$$, Jay
+          will define $$$K + 1$$$ more strings $$$S_0, S_1, \dots, S_K$$$.
+          $$$S_i$$$ can be created by taking the first character in $$$S$$$,
+          skipping the next $$$i$$$ characters, then taking the next character,
+          then skipping the next $$$i$$$ characters, and so on. For example, if
+          $$$S$$$ is <span class="tex-font-style-tt">southpacific</span>, then
+          $$$S_2$$$ is <span class="tex-font-style-tt">staf</span>. Note that
+          $$$S_0$$$ and $$$S$$$ are the same string.
+        </p>
+        <p>
+          Further, in honour of Jay's son ja$on's name, Jay will use letters
+          from a language called 'Engli$h', which contains all lowercase English
+          letters, except that the letter
+          <span class="tex-font-style-tt">s</span> is replaced with the letter
+          <span class="tex-font-style-tt">$</span>. So
+          <span class="tex-font-style-tt">$outh</span>,
+          <span class="tex-font-style-tt">pacific</span>,
+          <span class="tex-font-style-tt">programming</span>,
+          <span class="tex-font-style-tt">conte$t</span> are valid words in
+          Engli$h, but <span class="tex-font-style-tt">south</span> and
+          <span class="tex-font-style-tt">contest</span> are not.
+        </p>
+        <p>
+          In Jay's new game, he must find the string $$$J$$$ in each of the
+          $$$K+1$$$ words. For example, if $$$S$$$ is
+          <span class="tex-font-style-tt">aacbc</span> and $$$J$$$ is
+          <span class="tex-font-style-tt">ac</span>, then $$$S_1$$$ is
+          <span class="tex-font-style-tt">acc</span>, and $$$S_2$$$ is
+          <span class="tex-font-style-tt">ab</span>. $$$J$$$ is found once in
+          both $$$S_0$$$ and $$$S_1$$$, but not $$$S_2$$$.
+        </p>
+        <p>
+          Given the strings $$$S$$$ and $$$J$$$, as well as the value of
+          $$$K$$$, determine the number of occurrences of $$$J$$$ in each
+          $$$S_i$$$.
+        </p>
+      </div>
+      <p></p>
+      <p></p>
+      <div class="input-specification">
+        <div class="section-title">Input</div>
+        <p></p>
+        <p>
+          The first line of the input contains a single integer
+          $$$K$$$&nbsp;($$$0 \leq K &lt; 1\,000\,000$$$), which is the number of
+          strings to check.
+        </p>
+        <p>
+          The second line of the input contains a single non-empty string
+          $$$S$$$ that has strictly more than $$$K$$$ and at most
+          $$$1\,000\,000$$$ characters, consisting of Engli$h letters.
+        </p>
+        <p>
+          The third line of the input contains a single non-empty string
+          $$$J$$$, consisting of Engli$h letters. The length of $$$J$$$ is at
+          most the length of $$$S$$$.
+        </p>
+      </div>
+      <p></p>
+      <p></p>
+      <div class="output-specification">
+        <div class="section-title">Output</div>
+        <p></p>
+        <p>
+          Display the number of occurrences of $$$J$$$ in $$$S_0, S_1, \dots,
+          S_K$$$.
+        </p>
+      </div>
+      <p></p>
+      <p></p>
+      <div class="sample-tests">
+        <div class="section-title">Examples</div>
+        <p></p>
+        <p></p>
+        <div class="sample-test">
+          <div class="input">
+            <div class="title">Input</div>
+            <pre class="content">
+3
+ca$hca$h
+cc
+</pre
+            >
+          </div>
+          <div class="output">
+            <div class="title">Output</div>
+            <pre class="content">
+0
+0
+0
+1
+</pre
+            >
+          </div>
+          <div class="input">
+            <div class="title">Input</div>
+            <pre class="content">
+0
+abc
+abc
+</pre
+            >
+          </div>
+          <div class="output">
+            <div class="title">Output</div>
+            <pre class="content">
+1
+</pre
+            >
+          </div>
+          <div class="input">
+            <div class="title">Input</div>
+            <pre class="content">
+2
+aacbc
+ac
+</pre
+            >
+          </div>
+          <div class="output">
+            <div class="title">Output</div>
+            <pre class="content">
+1
+1
+0
+</pre
+            >
+          </div>
+          <div class="input">
+            <div class="title">Input</div>
+            <pre class="content">
+3
+$f$f$f
+$f
+</pre
+            >
+          </div>
+          <div class="output">
+            <div class="title">Output</div>
+            <pre class="content">
+3
+0
+1
+0
+</pre
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <p></p>
+    <p></p>
+  </body>
+</html>

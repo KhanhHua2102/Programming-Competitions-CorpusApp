@@ -1,0 +1,52 @@
+\problemname{Cave Escape
+}
+
+Scooby-Doo and Shaggy are exploring an abandoned castle, when they stand on a trapdoor and fall into in a cave. The cave has $n$ corners and has straight stone walls joining these corners. There seems to be no way out, so they decide to check the corners carefully to look for any crack that they could escape through. They are each checking a corner when they hear a low growl.
+
+\begin{quote}
+\textit{``Zoinks, Scoob!''} \textit{``Ruh-roh, Raggy!''}
+\end{quote}
+
+Is it a monster or just their stomachs rumbling? They aren't sticking around to find out! Trembling in fear, they need to run to each other, trying to huddle together as quickly as possible.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5, every node/.style={circle, minimum width=0.45cm, draw}]
+\node       (a) at ( 5, 0) {\includegraphics[height=0.8cm]{shaggy.png}};
+% \node[fill] (b) at ( 0, 0) {};
+\node       (c) at ( 0, 5) {\includegraphics[height=0.8cm]{scooby-doo.png}};
+\node[fill] (d) at (-5,-5) {};
+\node       (e) at ( 0, 0) {\includegraphics[height=0.8cm]{both.png}};
+\draw[ultra thick]       ([yshift=0.8pt]a.west)   -- ([yshift=0.8pt]e.east);
+\draw[ultra thick]       ([xshift=0.8pt]e.north)  -- ([xshift=0.8pt]c.south);
+\draw[ultra thick]       (c) -- (d) -- (a);
+\draw[ultra thick,lime]  ([yshift=-0.8pt]a.west)  -- ([yshift=-0.8pt]e.east);
+\draw[ultra thick,brown] ([xshift=-0.8pt]e.north) -- ([xshift=-0.8pt]c.south);
+
+\node       (za) at (15+5, 0) {\includegraphics[height=0.8cm]{shaggy.png}};
+\node[fill] (zb) at (15+0, 5) {};
+\node       (zc) at (15-5, 0) {\includegraphics[height=0.8cm]{scooby-doo.png}};
+\node[fill] (zd) at (15+0,-5) {};
+\node       (ze) at (15+0, 0) {\includegraphics[height=0.8cm]{both.png}};
+\draw[ultra thick]       (za) -- (zb) -- (zc) -- (zd) -- (za);
+\draw[ultra thick,lime]  (za) -- (ze);
+\draw[ultra thick,brown] (zc) -- (ze);
+\end{tikzpicture}
+\end{center}
+
+Shaggy and Scooby could be at any of the $N$ corners in the room (including at the same corner). For each pair of corners, find the minimum total distance they would have to run in order to reach each other if they started at those two corners.
+
+
+\section*{Input}
+
+The first line of the input contains two integers $N$ ($3 \le N \le 200$), which is the number of corners of the cave.
+
+The next $N$ lines each contain two integers $X$ ($-{10}^6 \le X \le {10}^6$) and $Y$ ($-{10}^6 \le Y \le {10}^6$), which are the coordinates of each corner of the cave in metres, provided in cyclic order anticlockwise around the cave. The polygon defining the cave is \textit{simple}, that is, its vertices are distinct and no two edges of the polygon intersect or touch, except that consecutive edges touch at their common corner. In addition, no two consecutive edges are collinear.
+
+
+\section*{Output}
+
+For each of the $N^2$ pairs of corners, display the minimum total distance that Shaggy and Scooby-Doo have to run, in metres.
+
+The distances should be displayed in order: the first $N$ values are the distances from the first corner in the input to all others (in the order of the input), the next $N$ values are the distances from the second corner in the input to all others (in the order of the input), and so on.
+
+Each distance should have an absolute or relative error of less than ${10}^{-6}$.

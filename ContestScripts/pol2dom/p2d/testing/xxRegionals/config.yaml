@@ -1,0 +1,63 @@
+contest_name: Testing-pol2dom
+polygon:
+  key: ???
+  secret: ???
+domjudge:
+  server: https://www.domjudge.org/demoweb
+  username: admin
+  password: admin
+  contest_id: testing_contest
+problems:
+  - name: menace-to-society
+    label: A
+    color: CornflowerBlue
+    override_memory_limit: 2048
+    polygon_id: 11111
+    author: Federico Glaudo
+    preparation: Federico Glaudo
+    polygon_version: -1
+    domjudge_local_version: -1
+    domjudge_server_version: -1
+contest_title: ICPC SOUTH PACIFIC REGIONAL FINALS
+contest_shortname: SP Regionals 2022
+problem_answer_details: |+
+  For problems that state ``\textit{Your answer should have an absolute or relative error of less than $10^{-9}$}'', your answer, $x$, will be compared to the correct answer, $y$. If $|x-y| < 10^{-9}$ or $\frac{|x-y|}{|y|} < 10^{-9}$, then your answer will be considered correct.
+definitions:
+  - |+
+    For problems that ask for a result modulo $m$: \\ If the correct answer to the problem is the integer $b$, then you should display the unique value $a$ such that:
+
+
+    \begin{itemize}
+    \item $0 \leq a < m$
+    \end{itemize}
+
+    \vskip-10pt
+    \hskip30pt and
+
+    \begin{itemize}
+    \item \vskip-10pt $(a-b)$ is a multiple of $m$.
+    \end{itemize}
+  - |+
+    A string $s_1s_2 \cdots s_n$ is lexicographically smaller than $t_1t_2\cdots t_\ell$ if
+
+    \begin{itemize}
+    \item there exists $k \leq \min(n,\ell)$ such that $s_i = t_i$ for all $1 \leq i < k$ and $s_k < t_k$
+    \end{itemize}
+
+    \vskip-10pt
+    \hskip30pt or
+
+    \begin{itemize}
+    \item \vskip-10pt $s_i = t_i$ for all $1 \leq i \leq \min(n,\ell)$ and $n < \ell$.
+    \end{itemize}
+  - |+
+    \begin{itemize}
+    \item Uppercase letters are the uppercase English letters ($A, B, \dots , Z$).
+    \item Lowercase letters are the lowercase English letters ($a, b, \dots , z$).
+    \end{itemize}
+  - |+
+    Unless otherwise specified, the distance between two points $(x_0, y_0)$ and $(x_1, y_1)$ is defined as its Euclidean distance: $$\sqrt{(x_0-x_1)^2 + (y_0-y_1)^2}.$$
+contest_latex_filename: /Users/vybien/Desktop/Projects/cits3200-project/ContestScripts/Replicated-xxRegionals
+header_logo_filename: wtg-icpc-header-2022.png
+contest_cover_filename: spp_divisions.png
+contest_date: December 17, 2022

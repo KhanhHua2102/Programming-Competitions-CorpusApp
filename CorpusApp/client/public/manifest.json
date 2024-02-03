@@ -1,0 +1,15 @@
+{
+  "short_name": "Contest Problem Archive",
+  "name": "ICPC Contest Problem Archive",
+  "icons": [
+    {
+      "src": "favicon",
+      "sizes": "32x32 16x16",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

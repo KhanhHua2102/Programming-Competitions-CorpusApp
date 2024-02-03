@@ -1,0 +1,34 @@
+contest_name: < >
+polygon:
+  key: ???
+  secret: ???
+domjudge:
+  server: https://www.domjudge.org/demoweb
+  username: admin
+  password: admin
+  contest_id: testing_contest
+problems:
+  - name: < lowercase-problem-name >
+    label: A
+    color: < example CornflowerBlue >
+    override_memory_limit: 2048
+    polygon_id: 11111
+    author: < can also be contest name >
+    preparation: < >
+    polygon_version: -1
+    domjudge_local_version: -1
+    domjudge_server_version: -1
+contest_title: < title of contest, printed on latex document >
+contest_shortname: < >
+problem_answer_details: < >
+definitions:
+  - |+
+    < Definition >
+  - |+
+    < Definition >
+contest_latex_filename: < path to file, without .tex file ending >
+header_logo_filename: < path to file >
+contest_cover_filename: < path to file >
+contest_date: < >
+
+

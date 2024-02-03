@@ -1,0 +1,28 @@
+\problemname{Flawed LLM
+}
+
+You have been working for Businessy Inc. for almost a year now and the company is holding its large annual conference. You need to travel from your home city to the city where the conference is being held but you would like to stop at other cities along the way to do some sightseeing. You have identified $N$ cities that you think are interesting enough to visit (city 1 is your home city and city $N$ is the conference city). Each city is located at a unique place on the XY-plane.
+
+To cut costs, Businessy Inc. has switched to using an LLM (Large Language Model) to analyze and approve expense reports. Luckily, you discovered a flaw in this system due to its biased training data. Your travel expenses are automatically approved by the LLM as long as all of your travel is along straight lines from city to city and, while traveling along the straight lines, your distance to city $N$ is non-increasing.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{fig}
+\end{center}
+
+What is the maximum number of extra cities (not including your home city or the conference city) that you can visit while traveling to the conference and still having your expense report approved?
+
+
+\section*{Input}
+
+The first line of the input contains a single integer $N$~($2 \leq N \le 1\,000$),
+which is the number of interesting cities.
+
+The following $N$ lines each contain two integers $X$~($-10^6 \leq X \leq 10^6$) and $Y$~($-10^6 \leq Y \leq 10^6$), which are the coordinates of each city.
+
+No two cities are at the same point.
+
+
+
+\section*{Output}
+
+Display the maximum number of extra cities you can visit while still having your expense report approved.

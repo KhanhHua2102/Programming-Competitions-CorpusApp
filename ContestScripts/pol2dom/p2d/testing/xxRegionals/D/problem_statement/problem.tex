@@ -1,0 +1,27 @@
+\problemname{Distinct Platforms
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+You are playing a new platforming game on a 2D grid. There are $N$ platforms numbered from $1$ to $N$ spread out in the world. Platform $i$ covers the range from $L_i$ to $R_i$. You can start at any platform you choose and then must jump between platforms. You can jump from platform $a$ to platform $b$ if their ranges overlap. That is, there is some integer $x$ such that $L_a \leq x \leq R_a$ and $L_b \leq x \leq R_b$.
+
+Once you visit a platform (by either starting there or jumping to it), you can never jump onto that platform again. You win the game by visiting all of the platforms.
+
+Find out if it is possible to win the game. If it is, show a way to visit all of the platforms.
+
+
+\section*{Input}
+
+The first line of input contains a single integer $N$~($1 \leq N \leq 500\,000$), which is the number of platforms.
+
+The next $N$ lines describe the platforms. Each of these lines contains two integers $L_i$~($1 \leq L_i \leq 10^9$) and $R_i$~($L_i \leq R_i \leq 10^9$). This represents that platform $i$ covers the range from $L_i$ to $R_i$.
+
+
+\section*{Output}
+
+If it's not possible to visit each platform exactly once, display \texttt{NO}. Otherwise, display \texttt{YES} followed by $N$ integers representing the order to visit each platform. If there are multiple solutions, any will be accepted.
+

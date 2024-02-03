@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<problem revision="11" short-name="menace-to-society" url="https://polygon.codeforces.com/p2aDkWQ/Edgeworth/menace-to-society">
+    <names>
+        <name language="english" value="A Menace 2 \$ociety"/>
+    </names>
+    <statements>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/english/problem.tex" type="application/x-tex"/>
+        <statement charset="UTF-8" language="english" mathjax="true" path="statements/.html/english/problem.html" type="text/html"/>
+        <statement language="english" path="statements/.pdf/english/problem.pdf" type="application/pdf"/>
+    </statements>
+    <judging cpu-name="Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz" cpu-speed="3600" input-file="" output-file="" run-count="1">
+        <testset name="tests">
+            <time-limit>15000</time-limit>
+            <memory-limit>268435456</memory-limit>
+            <test-count>96</test-count>
+            <input-path-pattern>tests/%02d</input-path-pattern>
+            <answer-path-pattern>tests/%02d.a</answer-path-pattern>
+            <tests>
+                <test description="File &quot;2.in&quot;" method="manual" sample="true"/>
+                <test description="File &quot;1.in&quot;" method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test method="manual" sample="true"/>
+                <test cmd="rand_gen s1 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s1 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s1 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s1 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s1 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s1 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s1 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s1 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s1 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s1 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s2 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s2 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s2 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s2 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s2 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s2 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s2 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s2 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s2 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s2 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s3 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s3 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s3 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s3 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s3 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s3 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s3 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s3 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s3 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s3 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s4 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s4 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s4 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s4 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s4 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s4 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s4 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s4 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s4 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s4 1000000 1000000 5000 10000 2" method="generated"/>
+                <test description="all a's, big" method="manual"/>
+                <test description="large case" method="manual"/>
+                <test method="manual"/>
+                <test cmd="rand_gen s5 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s5 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s5 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s5 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s5 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s5 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s5 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s5 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s5 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s5 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s6 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s6 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s6 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s6 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s6 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s6 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s6 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s6 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s6 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s6 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s7 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s7 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s7 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s7 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s7 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s7 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s7 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s7 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s7 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s7 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen s8 1 1 1 1" method="generated"/>
+                <test cmd="rand_gen s8 1 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s8 1000000 1000000 1 1000000" method="generated"/>
+                <test cmd="rand_gen s8 1000000 1000000 1 3" method="generated"/>
+                <test cmd="rand_gen s8 1000000 1000000 5000 10000" method="generated"/>
+                <test cmd="rand_gen_alphabet s8 1 1 1 1 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s8 1 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s8 1000000 1000000 1 1000000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s8 1000000 1000000 1 3 2" method="generated"/>
+                <test cmd="rand_gen_alphabet s8 1000000 1000000 5000 10000 2" method="generated"/>
+                <test cmd="rand_gen_alphabet seed 1000000 1000000 10000 10000 1" method="generated"/>
+                <test cmd="rand_gen_alphabet seed 1000000 1000000 375000 375000 1" method="generated"/>
+                <test cmd="rand_gen_alphabet seed 1000000 1000000 500000 500000 1" method="generated"/>
+                <test cmd="alternating_gen dfg4t4dfgd" method="generated"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test method="manual"/>
+                <test cmd="dolla_dolla_bills" method="generated"/>
+                <test cmd="dolla_dolla_bills 375000" method="generated"/>
+            </tests>
+        </testset>
+    </judging>
+    <files>
+        <resources>
+            <file path="files/bounds.h" type="h.g++"/>
+            <file path="files/olymp.sty"/>
+            <file path="files/problem.tex"/>
+            <file path="files/statements.ftl"/>
+            <file path="files/testlib.h" type="h.g++"/>
+        </resources>
+        <executables>
+            <executable>
+                <source path="files/alternating_gen.cc" type="cpp.g++17"/>
+            </executable>
+            <executable>
+                <source path="files/dolla_dolla_bills.cc" type="cpp.g++17"/>
+            </executable>
+            <executable>
+                <source path="files/rand_gen.cpp" type="cpp.g++17"/>
+            </executable>
+            <executable>
+                <source path="files/rand_gen_alphabet.cpp" type="cpp.g++17"/>
+            </executable>
+            <executable>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+            </executable>
+        </executables>
+    </files>
+    <assets>
+        <checker name="std::ncmp.cpp" type="testlib">
+            <source path="files/check.cpp" type="cpp.g++17"/>
+            <copy path="check.cpp"/>
+            <testset>
+                <test-count>0</test-count>
+                <input-path-pattern>files/tests/checker-tests/%02d</input-path-pattern>
+                <output-path-pattern>files/tests/checker-tests/%02d.o</output-path-pattern>
+                <answer-path-pattern>files/tests/checker-tests/%02d.a</answer-path-pattern>
+                <tests/>
+            </testset>
+        </checker>
+        <validators>
+            <validator>
+                <source path="files/validate.cpp" type="cpp.g++17"/>
+                <testset>
+                    <test-count>8</test-count>
+                    <input-path-pattern>files/tests/validator-tests/%02d</input-path-pattern>
+                    <tests>
+                        <test verdict="valid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="invalid"/>
+                        <test verdict="valid"/>
+                    </tests>
+                </testset>
+            </validator>
+        </validators>
+        <solutions>
+            <solution tag="accepted">
+                <source path="solutions/db.py" type="python.pypy3"/>
+            </solution>
+            <solution tag="main">
+                <source path="solutions/eliot_ac.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/eliot_boyer.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/eliot_boyer_horspool.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/eliot_no_break.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/eliot_slow_io.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/eliot_tle.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/eliot_zalg_tle.cpp" type="cpp.g++17"/>
+            </solution>
+            <solution tag="accepted">
+                <source path="solutions/mw.cc" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/mw_heuristic.cc" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/mw_naive_zalg.cc" type="cpp.g++17"/>
+            </solution>
+            <solution tag="time-limit-exceeded">
+                <source path="solutions/mw_regex.py" type="python.3"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/mw_regex_nooverlap.py" type="python.3"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/mw_wa.cc" type="cpp.g++17"/>
+            </solution>
+            <solution tag="wrong-answer">
+                <source path="solutions/using_dollars.cc" type="cpp.g++17"/>
+            </solution>
+        </solutions>
+    </assets>
+    <properties>
+        <property name="tests-wellformed" value="true"/>
+    </properties>
+    <stresses>
+        <stress-count>0</stress-count>
+        <stress-path-pattern>stresses/%03d</stress-path-pattern>
+        <list/>
+    </stresses>
+    <tags>
+        <tag value="string"/>
+    </tags>
+</problem>

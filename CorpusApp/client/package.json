@@ -1,0 +1,64 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "apollo-client": "^2.6.10",
+    "autoprefixer": "^10.4.15",
+    "axios": "^1.5.1",
+    "babel": "^6.23.0",
+    "bootstrap": "^5.3.1",
+    "crypto-browserify": "^3.12.0",
+    "dompurify": "^3.0.6",
+    "dotenv": "^16.3.1",
+    "jest": "^27.5.1",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "postcss": "^8.4.28",
+    "prettier": "^3.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dom-confetti": "^0.2.0",
+    "react-router-dom": "^6.15.0",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.3.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "format:check": "prettier -c .",
+    "format": "prettier -w .",
+    "setup": "npm install && npm start",
+    "prod": "npm start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "jest-fetch-mock": "^3.0.3",
+    "jwt-decode": "^3.1.2",
+    "react-test-renderer": "^18.2.0"
+  }
+}

@@ -1,0 +1,32 @@
+\problemname{Keeping Arrays Menacing
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+Jay is back at it again. A real menace to society, he now wants to find the most
+menacing menace array.
+
+An array $A$ contains many \textit{menace arrays}. The menace arrays of an array $A$ are all subsequences of $A$ that can be constructed using the following process: First, pick a subarray (a subarray is a contiguous subsequence) of $A$ that has more than $K$ elements. Then, delete exactly $K$ elements from that subarray. We are only interested in the sum of each of these menace arrays. The \textit{menace value} of $A$ is the largest sum over all the menace arrays in $A$, or it is zero if there are fewer than $K + 1$ elements in $A$ to begin with.
+
+For example, if $A = [1, 2, 3, 4, 5]$ and $K = 2$, then $[1, 3]$ is a menace array, since you could select $[1, 2, 3, 4]$ and delete 2 and 4. However, $[1, 5]$ is not a menace array since the only subarray that contains both 1 and 5 is the whole array and we need to delete exactly 2 elements.
+
+Jay is going to play a game. He begins with an empty array, and then he performs a sequence of $Q$ queries. Each query is one of two types: an insertion query or a menace query. In an insertion query, Jay inserts a number at either the beginning or end of the array. In a menace query, Jay determines the menace value of his current array.
+
+Perform the sequence of queries for Jay.
+
+
+\section*{Input}
+
+The first line of the input contains two integers $Q$~($1 \leq Q \leq 200\,000$), which is the number of queries, and $K$~($0 \leq K \leq 10$).
+
+The next $Q$ lines describe the queries. Each line starts with a single character $c$~($c$ is one of \texttt{L}, \texttt{R}, or \texttt{M}). If $c = \texttt{M}$, this is a menace query. Otherwise, it is an insert query, and this line contains is a second integer $V$~($-1\,000\,000 \leq V \leq 1\,000\,000$), which is the value to insert to the array. If $c = \texttt{L}$, then $V$ should be inserted at the beginning. If $c = \texttt{R}$, then $V$ should in inserted at the end.
+
+
+\section*{Output}
+
+For each menace query in the order given in the input, display the menace value for the current array.
+

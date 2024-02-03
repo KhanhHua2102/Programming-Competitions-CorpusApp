@@ -1,0 +1,31 @@
+\problemname{Emergency Plan
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+The town of Bloomsville is always prepared for an emergency. The houses in Bloomsville are arranged in a single straight line running west to east, and numbered from $1$ to $n$, inclusive, in that order. There is exactly one person per house. In case of a fire at a house, the occupant of that house is allowed to seek shelter at any house that is strictly west of their house. Since the westernmost house has no houses to its west, they are given a special firehose to put out the fire. Every other person must decide where they will seek shelter in case of an emergency.
+
+Each house has an emergency level, and each person starts with an initial emergency level equal to their house's emergency level. They will seek shelter at a house with a similar emergency level to their own emergency level. However, the emergency level of a person decreases as they walk. For every house that a person passes, their emergency level decreases by one.
+
+For example, consider 3 houses with emergency levels of $[3, 6, 5]$ (listed from west to east). The third house has an emergency level of 5, so the person there will initially have an emergency level of 5. If they take shelter in the middle house, their emergency level would be 4. If they go to the westernmost house, it would be 3.
+
+Each person will choose the house that has the closest emergency level to theirs when they arrive at that house (they will only ever walk west). In the example above, the person in the third house will choose the first house since $|3 - 3| < |4 - 6|$. If there are two houses that provide the same absolute difference, they will choose the one where they walk the least.
+
+Given the emergency levels of the houses, determine which house each of the people (except the westernmost) will go to in an emergency.
+
+
+\section*{Input}
+
+The first line of input contains a single integer $n$~($2 \leq n \leq 300\,000$), which is the number of houses.
+
+The next line contains $n$ integers $e_1, e_2, \dots, e_n$~($0 \leq e_i \leq 10^9$), which are the emergency levels of the houses (which is also the initial emergency level of the person in each of them) in order from west to east.
+
+
+\section*{Output}
+
+Display which houses (by number) each of the $n-1$ people (not including the person initially in the westernmost house) will go to in an emergency, in order from west to east of each person's initial location.
+

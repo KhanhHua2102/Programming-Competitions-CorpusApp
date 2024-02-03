@@ -1,0 +1,29 @@
+\problemname{Land Tax
+}
+
+\intextsep2mm
+\begin{wrapfigure}{r}{50mm}
+ \includegraphics[width=50mm]{img.png}
+\end{wrapfigure}
+~
+
+Sir Elong Muskrat does not like to pay taxes and has been evading them for years using shell companies and creative accounting. The government has finally decided to crack down on his tax evasion.
+
+Sir Elong owns lots of rental properties all of which are located consecutively on the same street. There are $N$ properties on the street, all of which are owned by Sir Elong, and they are numbered from 1 to $N$. The $i$th property has a value $v_i$ and a size $s_i$. The tax paid on the properties is the sum of their values.
+
+Sir Elong has decided to minimise his tax by merging properties. Two directly adjacent properties can be merged by knocking down the fence between them. The value of the merged property is the maximum of their values ($\max(v_i, v_j)$) and the size is the sum of their sizes ($s_i + s_j$). Sir Elong cannot create a property whose size is larger than the legal limit $L$. Sir Elong can repeatedly merge properties as many times as he likes otherwise. He can merge properties that were created in a previous merger.
+
+What is the minimum amount of tax Sir Elong can pay?
+
+
+\section*{Input}
+
+The first line of input contains two integers $N$~($1 \leq N \leq 200\,000$) and $L$~($1 \leq L \leq 10^9$), which are the number of properties and the legal property size limit respectively.
+
+The next $N$ lines describe the properties. The $i$th of these describes property number $i$ and contains two integers $v_i$~($0 \leq v_i \leq 10^9$), this property's value, and $s_i$~($1 \leq s_i \leq L$), this property's size.
+
+
+\section*{Output}
+
+Display the minimum amount of tax payable by Sir Elong.
+
